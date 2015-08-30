@@ -1,0 +1,12 @@
+#!/bin/bash
+cd /etc/ssh/
+if [[ -e /etc/ssh/WEB_PORT_IN_USE ]];
+then
+	echo "WEB PORT MOD ALREADY RUNNING!"
+	exit 1
+fi
+/etc/init.d/apache2 graceful-stop
+mv sshd_config sshd_config_std
+mv sshd_config_custom sshd_config
+touch WEB_PORT_IN_USE
+/etc/init.d/ssh restart

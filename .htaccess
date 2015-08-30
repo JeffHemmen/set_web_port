@@ -1,0 +1,5 @@
+AuthUserFile /srv/vhosts/MY_SERVER/ssl/htdocs/admin/.htpasswd
+AuthName "Admin backend"
+AuthType Digest
+
+require user root  

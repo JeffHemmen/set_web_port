@@ -1,0 +1,11 @@
+#!/bin/bash
+cd /etc/ssh/
+if [[ ! -e /etc/ssh/WEB_PORT_IN_USE ]]; then
+	echo "NOT EVEN RUNNING!";
+	exit 1
+fi
+mv sshd_config sshd_config_custom
+mv sshd_config_std sshd_config
+/etc/init.d/ssh restart
+/etc/init.d/apache2 start
+rm WEB_PORT_IN_USE
